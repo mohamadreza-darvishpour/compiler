@@ -1,0 +1,74 @@
+To add the Flex library to your C++ project in CLion, you need to perform the following steps:
+
+1. Install Flex: Start by installing the Flex library on your system. On Ubuntu or Debian-based systems, you can use the package manager to install Flex with the following command:
+   ````shell
+   sudo apt-get install flex
+   ```
+
+2. Create a new C++ project in CLion: Open CLion and create a new C++ project or open an existing project.
+
+3. Create a Flex file: Right-click on your project directory in the CLion project view and select "New" -> "File" to create a new file. Give it a name with the `.l` extension, such as `lexer.l`. This file will contain your Flex specifications.
+
+4. Write Flex code: Open the Flex file you created in the previous step and write your Flex specifications. For example, you can define regular expressions and corresponding actions for tokenizing the input source code.
+
+5. Generate the Flex C++ code: In the terminal within CLion, navigate to the directory containing the Flex file (`.l` file) and execute the following command to generate the C++ file:
+   ````shell
+   flex lexer.l
+   ```
+
+   This command will generate a C++ file named `lex.yy.cc` (or `lex.yy.cpp`) based on your Flex specifications.
+
+6. Add the generated C++ file to your CLion project: Right-click on your project directory in the CLion project view and select "New" -> "File". Choose the option to create a C++ source file and name it something meaningful, such as `lexer.cpp`. Copy and paste the generated C++ code (from `lex.yy.cc` or `lex.yy.cpp`) into this new file.
+
+7. Build and run the project: Build and run your project in CLion to test your Flex-based lexer implementation.
+
+With these steps, you can add the Flex library to your CLion project and integrate it into your C++ code. Remember to adjust the file names and paths according to your project's structure.
+____________________________________
+*******************************
+)))))))))))))))))))))))))))))))))
+
+The flex input file consists of three sections, separated by a line containing only ‘%%’.
+definitions
+%%
+rules
+%%
+user code
+-------------------------
+
+get .cpp file from flex defined file .l   .
+flex --c++ -o lexer.cpp lexer.l
+------------------
+
+
+good one in git
+https://github.com/fardinanam/A-C-Compiler/blob/master/Offline-2%20(Lexical%20Analysis)/lex.l
+https://github.com/fardinanam/A-C-Compiler/blob/master/Offline-2%20(Lexical%20Analysis)/lex.l
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
