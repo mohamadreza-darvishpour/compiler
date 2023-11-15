@@ -1,14 +1,20 @@
 %{
 #include <iostream>
+//include symbol staructure that made.
+#include "symb_char_table.h"
 using namespace std;
-int mylineno = 0 ;
+//add "\* *\" to rules.
+sym_table token_table;
+int line_no = 0;
+int token_no = 0;
 
 %}
 
 %option noyywrap c++
 
 string  \"[^\n"]+\"
-ws  [ \t]+
+tab    [\t]
+ws  [ ]+
 alpha  [A-Za-z]
 dig  [0-9]
 name  ({alpha}|{dig}|\$)({alpha}|{dig}|[_.\-/$])*
@@ -17,33 +23,40 @@ num2  [-+]?{dig}*\.{dig}+([eE][-+]?{dig}+)?
 number  {num1}|{num2}
 
 
+
 %%
 
-{ws}
 
-"/*"     {
-            int c ;
-            while((c=yyinput())!=0)
-                {
-                    if(c=='\n')
-                    ++mylineno;
-                    else if(c=='*')
-                    {
-                    if((c=yyinput())=='/')
-                        break;
-                    else
-                        unput(c);
-                    }
+
+
+{ws}    {}
+
+{tab}    {
+            token_table.add(++token_no,line_no,YYText() , "tab");
+}
+
+
+
+{number}    {
+             token_table.add(++token_no,line_no,YYText() , "number");
+            }
+
+[\n]           {line_no++;}
+
+{name}          {
+                 token_table.add(++token_no,line_no,YYText() , "name");
+
                 }
 
-        }
+{string}        {
+                token_table.add(++token_no,line_no,YYText() , "string");
 
-{number}     cout<<"number" <<YYText()<<'\n';
-\n           mylineno++;
-{name}          cout<<"name"<<YYText() <<'\n';
-{string}        cout<<"string"<<YYText() << '\n';
+                }
 
 
+<<EOF>>    {
+                token_table.show_table();
+            }
 
 %%
 
@@ -53,6 +66,9 @@ int main(int argc ,char argv){
     FlexLexer* lexer = new yyFlexLexer;
     while(lexer->yylex() !=0)
             ;
-
+    token_table.show_table();
     return 0;
 }
+
+
+

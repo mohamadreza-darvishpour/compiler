@@ -1,6 +1,5 @@
-#line 2 "lexer.cpp"
 
-#line 4 "lexer.cpp"
+#line 3 "lex.yy.cc"
 
 #define  YY_INT_ALIGNED short int
 
@@ -427,8 +426,8 @@ sym_table token_table;
 int line_no = 0;
 int token_no = 0;
 
-#line 431 "lexer.cpp"
-#line 432 "lexer.cpp"
+#line 430 "lex.yy.cc"
+#line 431 "lex.yy.cc"
 
 #define INITIAL 0
 
@@ -566,7 +565,7 @@ YY_DECL
 
 
 
-#line 570 "lexer.cpp"
+#line 569 "lex.yy.cc"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -638,7 +637,7 @@ YY_RULE_SETUP
 case 3:
 YY_RULE_SETUP
 #line 40 "flex_lexer_analyser.l"
-{
+{                
              token_table.add(++token_no,line_no,YYText() , "number");
             }
 	YY_BREAK
@@ -664,18 +663,14 @@ YY_RULE_SETUP
 
                 }
 	YY_BREAK
-case YY_STATE_EOF(INITIAL):
-#line 57 "flex_lexer_analyser.l"
-{
-                token_table.show_table();
-            }
-	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 61 "flex_lexer_analyser.l"
+#line 59 "flex_lexer_analyser.l"
 ECHO;
 	YY_BREAK
-#line 679 "lexer.cpp"
+#line 672 "lex.yy.cc"
+case YY_STATE_EOF(INITIAL):
+	yyterminate();
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1636,7 +1631,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 61 "flex_lexer_analyser.l"
+#line 59 "flex_lexer_analyser.l"
 
 
 
