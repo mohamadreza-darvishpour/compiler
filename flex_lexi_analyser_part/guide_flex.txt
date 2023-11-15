@@ -45,7 +45,12 @@ https://github.com/fardinanam/A-C-Compiler/blob/master/Offline-2%20(Lexical%20An
 https://github.com/fardinanam/A-C-Compiler/blob/master/Offline-2%20(Lexical%20Analysis)/lex.l
 
 
-
+____________________________________
+some functions in vector lib in cpp related to structurez. 
+push_back. 
+size , 
+pop_back, 
+at , 
 
 
 
