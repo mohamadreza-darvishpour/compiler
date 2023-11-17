@@ -63,26 +63,27 @@ number  {num1}|{num2}
 
 
 
-int main(){
-    std::string file_content;
-    std::ifstream my_file("/home/lrd/Documents/compiler/flex_lexi_analyser_part/newtest.txt"
-     , std::ios::in | std::ios::binary);
-    //my_file.imbue(std::locale(std::locale(),new std::codecvt_utf*<char>));
-    if(my_file.is_open()){
-        std::string line;
-        while(std::getline(my_file,line)){
-            std::cout << line << std::endl;
-            file_content += line +"\n";
-        }
-        yy_scan_string(file_content.c_str());
-        yylex();
-    my_file.close();
+int main(int argc, char* argv[]) {
+    if(argc != 2) {
+        cout << "Please provide input file name and try again\n";
+        return 0;
     }
-    else{
-        std::cout << "can't open file.";
+
+    FILE* fin = fopen(argv[1], "r");
+
+    if(fin == NULL) {
+        printf("Cannot open input file\n");
+        return 0;
     }
-    token_table.show_table();
-    return 17673;
+
+    //logFile.open("1805087_log.txt");
+	//tokenFile.open("1805087_token.txt");
+
+    yyin = fin;
+    yylex();
+    fclose(fin);
+
+    return 0;
 }
 
 

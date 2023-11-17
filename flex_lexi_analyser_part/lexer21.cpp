@@ -1,6 +1,6 @@
-#line 2 "lexer.cpp"
+#line 2 "lexer21.cpp"
 
-#line 4 "lexer.cpp"
+#line 4 "lexer21.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -416,8 +416,8 @@ static const flex_int16_t yy_chk[74] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "flex_lexer_analyser.l"
-#line 2 "flex_lexer_analyser.l"
+#line 1 "flex_lexer_analyser2.l"
+#line 2 "flex_lexer_analyser2.l"
 #include <iostream>
 #include <fstream>
 //include symbol staructure that made.
@@ -428,8 +428,8 @@ sym_table token_table;
 int line_no = 0;
 int token_no = 0;
 
-#line 432 "lexer.cpp"
-#line 433 "lexer.cpp"
+#line 432 "lexer21.cpp"
+#line 433 "lexer21.cpp"
 
 #define INITIAL 0
 
@@ -561,13 +561,13 @@ YY_DECL
 		}
 
 	{
-#line 28 "flex_lexer_analyser.l"
+#line 28 "flex_lexer_analyser2.l"
 
 
 
 
 
-#line 571 "lexer.cpp"
+#line 571 "lexer21.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -626,19 +626,19 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 33 "flex_lexer_analyser.l"
+#line 33 "flex_lexer_analyser2.l"
 {}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 35 "flex_lexer_analyser.l"
+#line 35 "flex_lexer_analyser2.l"
 {
             token_table.add(++token_no,line_no,YYText() , "tab");
 }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 41 "flex_lexer_analyser.l"
+#line 41 "flex_lexer_analyser2.l"
 {
              token_table.add(++token_no,line_no,YYText() , "number");
             }
@@ -646,12 +646,12 @@ YY_RULE_SETUP
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 45 "flex_lexer_analyser.l"
+#line 45 "flex_lexer_analyser2.l"
 {line_no++;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 47 "flex_lexer_analyser.l"
+#line 47 "flex_lexer_analyser2.l"
 {
                  token_table.add(++token_no,line_no,YYText() , "name");
 
@@ -659,24 +659,24 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 52 "flex_lexer_analyser.l"
+#line 52 "flex_lexer_analyser2.l"
 {
                 token_table.add(++token_no,line_no,YYText() , "string");
 
                 }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 58 "flex_lexer_analyser.l"
+#line 58 "flex_lexer_analyser2.l"
 {
                 return 0;
             }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 62 "flex_lexer_analyser.l"
+#line 62 "flex_lexer_analyser2.l"
 ECHO;
 	YY_BREAK
-#line 680 "lexer.cpp"
+#line 680 "lexer21.cpp"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1637,32 +1637,32 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 62 "flex_lexer_analyser.l"
+#line 62 "flex_lexer_analyser2.l"
 
 
 
-#include "lex.yy.cc"
-int main(){
-    std::string file_content;
-    std::ifstream my_file("/home/lrd/Documents/compiler/flex_lexi_analyser_part/t_input.txt"
-     , std::ios::in | std::ios::binary);
-    //my_file.imbue(std::locale(std::locale(),new std::codecvt_utf*<char>));
-    if(my_file.is_open()){
-        std::string line;
-        while(std::getline(my_file,line)){
-            std::cout << line << std::endl;
-            file_content += line +"\n";
-        }
-        //yy_scan_string(file_content.c_str());
-        yyin = my_File ;
-        yylex();
-    my_file.close();
+
+int main(int argc, char* argv[]) {
+    if(argc != 2) {
+        cout << "Please provide input file name and try again\n";
+        return 0;
     }
-    else{
-        std::cout << "can't open file.";
+
+    FILE* fin = fopen(argv[1], "r");
+
+    if(fin == NULL) {
+        printf("Cannot open input file\n");
+        return 0;
     }
-    token_table.show_table();
-    return 17673;
+
+    //logFile.open("1805087_log.txt");
+	//tokenFile.open("1805087_token.txt");
+
+    yyin = fin;
+    yylex();
+    fclose(fin);
+
+    return 0;
 }
 
 

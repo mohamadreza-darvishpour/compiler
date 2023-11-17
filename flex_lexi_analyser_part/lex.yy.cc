@@ -418,6 +418,7 @@ static const flex_int16_t yy_chk[74] =
 #line 1 "flex_lexer_analyser.l"
 #line 2 "flex_lexer_analyser.l"
 #include <iostream>
+#include <fstream>
 //include symbol staructure that made.
 #include "symb_char_table.h"
 using namespace std;
@@ -426,8 +427,8 @@ sym_table token_table;
 int line_no = 0;
 int token_no = 0;
 
-#line 430 "lex.yy.cc"
 #line 431 "lex.yy.cc"
+#line 432 "lex.yy.cc"
 
 #define INITIAL 0
 
@@ -559,13 +560,13 @@ YY_DECL
 		}
 
 	{
-#line 27 "flex_lexer_analyser.l"
+#line 28 "flex_lexer_analyser.l"
 
 
 
 
 
-#line 569 "lex.yy.cc"
+#line 570 "lex.yy.cc"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -624,32 +625,32 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 32 "flex_lexer_analyser.l"
+#line 33 "flex_lexer_analyser.l"
 {}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 34 "flex_lexer_analyser.l"
+#line 35 "flex_lexer_analyser.l"
 {
             token_table.add(++token_no,line_no,YYText() , "tab");
 }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 40 "flex_lexer_analyser.l"
-{                
+#line 41 "flex_lexer_analyser.l"
+{
              token_table.add(++token_no,line_no,YYText() , "number");
             }
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 44 "flex_lexer_analyser.l"
+#line 45 "flex_lexer_analyser.l"
 {line_no++;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 46 "flex_lexer_analyser.l"
+#line 47 "flex_lexer_analyser.l"
 {
                  token_table.add(++token_no,line_no,YYText() , "name");
 
@@ -657,20 +658,24 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 51 "flex_lexer_analyser.l"
+#line 52 "flex_lexer_analyser.l"
 {
                 token_table.add(++token_no,line_no,YYText() , "string");
 
                 }
 	YY_BREAK
+case YY_STATE_EOF(INITIAL):
+#line 58 "flex_lexer_analyser.l"
+{
+                return 0;
+            }
+	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 59 "flex_lexer_analyser.l"
+#line 62 "flex_lexer_analyser.l"
 ECHO;
 	YY_BREAK
-#line 672 "lex.yy.cc"
-case YY_STATE_EOF(INITIAL):
-	yyterminate();
+#line 679 "lex.yy.cc"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1631,18 +1636,36 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 59 "flex_lexer_analyser.l"
+#line 62 "flex_lexer_analyser.l"
 
 
 
-
-int main(int argc ,char argv){
-    FlexLexer* lexer = new yyFlexLexer;
-    while(lexer->yylex() !=0)
-            ;
+/*
+int main(){
+    std::string file_content;
+    std::ifstream my_file("/home/lrd/Documents/compiler/flex_lexi_analyser_part/newtest.txt"
+     , std::ios::in | std::ios::binary);
+    //my_file.imbue(std::locale(std::locale(),new std::codecvt_utf*<char>));
+    if(my_file.is_open()){
+        std::string line;
+        while(std::getline(my_file,line)){
+            std::cout << line << std::endl;
+            file_content += line +"\n";
+        }
+        yy_scan_string(file_content.c_str());
+        yylex();
+    my_file.close();
+    }
+    else{
+        std::cout << "can't open file.";
+    }
     token_table.show_table();
-    return 0;
+    return 17673;
 }
+*/
+
+
+
 
 
 
