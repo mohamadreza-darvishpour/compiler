@@ -1,0 +1,37 @@
+%{
+#include <iostream>
+#include <string>
+%}
+
+DIGIT       [0-9]
+LETTER      [a-zA-Z]
+FLOAT       {DIGIT}+(\.{DIGIT}+)?([eE][-+]?{DIGIT}+)?
+STRING      \"([^\\\n]|(\\.))*?\"
+TAB         \t
+SPACE       [ \f\r\v]+
+NEWLINE     \n
+
+%{
+#define KEYWORD \
+    "if"|"else"|"print"|"cout"|"show"|"def"
+%}
+
+%%
+{FLOAT}     { std::cout << "FLOAT: " << yytext << std::endl; }
+{STRING}    { std::cout << "STRING: " << yytext << std::endl; }
+{TAB}       { std::cout << "TAB" << std::endl; }
+{SPACE}     /* skip whitespace */
+{NEWLINE}   /* skip newline */
+
+{KEYWORD}   { std::cout << "KEYWORD: " << yytext << std::endl; }
+"="         { std::cout << "OPERATOR: =" << std::endl; }
+"<"         { std::cout << "OPERATOR: <" << std::endl; }
+">"         { std::cout << "OPERATOR: >" << std::endl; }
+"=="        { std::cout << "OPERATOR: ==" << std::endl; }
+.           { std::cout << "UNRECOGNIZED: " << yytext << std::endl; }
+%%
+
+int main() {
+    yylex();
+    return 0;
+}

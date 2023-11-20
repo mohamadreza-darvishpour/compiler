@@ -1,0 +1,2 @@
+flex -o lex2.cpp lex.l
+flex -o lex2.cpp lex.l
