@@ -1,4 +1,4 @@
-#include "lex.cpp"
+#include "lex2.cpp"
 #include <fstream>
 #include <iostream>
 #include <cstdio>
@@ -12,25 +12,16 @@ extern "C" {
 }
 int main(){
 
-   // std::string path =  "/home/lrd/Documents/compiler/flex_lexi_analyser_part/t_input.txt";
-     char path[] =  "/home/lrd/Documents/compiler/flex_lexi_analyser_part/t_input.txt";
-/*
-        YY_BUFFER_STATE newBuffer = yy_create_buffer(myfile, YY_BUF_SIZE);
-        yy_switch_to_buffer(newBuffer);
-        yylex( );
-        yy_delete_buffer(newBuffer);
-        myfile.close();
-*/
+    char path[] =  "/home/lrd/Documents/compiler/flex_lexi_analyser_part/t_input.txt";
     const char* filename = path ;
     FILE* inputfile = std::fopen(filename,"r");
     if(inputfile ==nullptr)
         std::cerr << "\nerror when opening file."<<std::endl;
-    //yy_scan_file(inputfile);
     yyin = inputfile;
     yylex();
     std::fclose(inputfile);
+    token_table.show_table();
 
-
-        return 32;
+    return 32;
     }
 
