@@ -1,4 +1,4 @@
-#include "symb_char_table.h"
+#include "../symb_char_table.h"
 
 
 int main(){

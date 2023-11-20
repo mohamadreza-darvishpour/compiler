@@ -1,6 +1,6 @@
-#line 2 "test_lex.cpp"
+#line 2 "file_lex.cpp"
 
-#line 4 "test_lex.cpp"
+#line 4 "file_lex.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -323,9 +323,6 @@ void yyfree ( void *  );
 #define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
 /* Begin user sect3 */
-
-#define yywrap() (/*CONSTCOND*/1)
-#define YY_SKIP_YYWRAP
 typedef flex_uint8_t YY_CHAR;
 
 FILE *yyin = NULL, *yyout = NULL;
@@ -440,8 +437,14 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "testflex.l"
-#line 445 "test_lex.cpp"
+#line 1 "file_lexer.l"
+#line 2 "file_lexer.l"
+#include <stdio.h>
+//#include "lex.yy.h"
+
+extern FILE* yyin; // Declare yyin as an external variable
+#line 447 "file_lex.cpp"
+#line 448 "file_lex.cpp"
 
 #define INITIAL 0
 
@@ -658,9 +661,9 @@ YY_DECL
 		}
 
 	{
-#line 3 "testflex.l"
+#line 8 "file_lexer.l"
 
-#line 664 "test_lex.cpp"
+#line 667 "file_lex.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -720,15 +723,15 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 4 "testflex.l"
-{ printf("Line: %s", yytext); }
+#line 9 "file_lexer.l"
+{ printf("Token: %s\n", yytext); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 5 "testflex.l"
+#line 10 "file_lexer.l"
 ECHO;
 	YY_BREAK
-#line 732 "test_lex.cpp"
+#line 735 "file_lex.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1733,10 +1736,23 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 5 "testflex.l"
+#line 10 "file_lexer.l"
 
+int yywrap(){
+    return 837;
+}
 
 int main() {
+    char file_path[] = "/home/lrd/Documents/compiler/flex_lexi_analyser_part/file_in_lexer/input.txt"; // Specify the file path here
+
+    yyin = fopen(file_path, "r");
+    if (yyin == NULL) {
+        printf("Error opening file: %s\n", file_path);
+        return 1;
+    }
+
     yylex();
+
+    fclose(yyin);
     return 0;
 }

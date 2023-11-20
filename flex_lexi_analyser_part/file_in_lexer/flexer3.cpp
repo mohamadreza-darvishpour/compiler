@@ -1,5 +1,6 @@
+#line 2 "flexer3.cpp"
 
-#line 3 "lex.yy.cc"
+#line 4 "flexer3.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -294,15 +295,12 @@ void yyfree ( void *  );
 #define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
 /* Begin user sect3 */
-#define YY_SKIP_YYWRAP
 typedef flex_uint8_t YY_CHAR;
 
 #define yytext_ptr yytext
 #define YY_INTERACTIVE
 
 #include <FlexLexer.h>
-
-int yyFlexLexer::yywrap() { return 1; }
 
 /* Done after the current pattern has been matched and before the
  * corresponding action - sets up yytext.
@@ -313,8 +311,8 @@ int yyFlexLexer::yywrap() { return 1; }
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 7
-#define YY_END_OF_BUFFER 8
+#define YY_NUM_RULES 2
+#define YY_END_OF_BUFFER 3
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -322,30 +320,27 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[37] =
+static const flex_int16_t yy_accept[6] =
     {   0,
-        0,    0,    8,    7,    2,    4,    1,    7,    5,    7,
-        7,    3,    1,    0,    5,    0,    3,    3,    3,    3,
-        5,    6,    3,    0,    0,    3,    0,    5,    3,    3,
-        0,    3,    5,    5,    3,    0
+        0,    0,    3,    1,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    4,    1,    5,    1,    6,    1,    1,    1,    1,
-        1,    1,    7,    1,    8,    9,   10,   11,   11,   11,
-       11,   11,   11,   11,   11,   11,   11,    1,    1,    1,
-        1,    1,    1,    1,   12,   12,   12,   12,   13,   12,
-       12,   12,   12,   12,   12,   12,   12,   12,   12,   12,
-       12,   12,   12,   12,   12,   12,   12,   12,   12,   12,
-        1,    1,    1,    1,   10,    1,   12,   12,   12,   12,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
 
-       13,   12,   12,   12,   12,   12,   12,   12,   12,   12,
-       12,   12,   12,   12,   12,   12,   12,   12,   12,   12,
-       12,   12,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -362,50 +357,29 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[14] =
+static const YY_CHAR yy_meta[3] =
     {   0,
-        1,    1,    2,    1,    2,    3,    4,    5,    3,    3,
-        5,    3,    3
+        1,    1
     } ;
 
-static const flex_int16_t yy_base[41] =
+static const flex_int16_t yy_base[6] =
     {   0,
-        0,    0,   59,   60,   60,   60,   54,    0,    0,    5,
-       46,    8,   52,   50,    0,   38,   13,   16,   19,    0,
-       26,   60,   31,   30,   29,   23,   24,   20,   17,   14,
-       12,    9,   31,    7,    4,   60,   42,   45,   47,   49
+        0,    0,    3,    4,    4
     } ;
 
-static const flex_int16_t yy_def[41] =
+static const flex_int16_t yy_def[6] =
     {   0,
-       36,    1,   36,   36,   36,   36,   36,   37,   38,   36,
-       36,   38,   36,   37,   38,   36,   36,   36,   38,   12,
-       38,   36,   18,   39,   40,   19,   36,   38,   38,   36,
-       36,   36,   38,   38,   38,    0,   36,   36,   36,   36
+        5,    1,    5,    5,    0
     } ;
 
-static const flex_int16_t yy_nxt[74] =
+static const flex_int16_t yy_nxt[7] =
     {   0,
-        4,    5,    6,    7,    8,    9,   10,   10,   11,    4,
-       12,    9,    9,   16,   35,   17,   19,   35,   20,   32,
-       21,   23,   32,   17,   30,   24,   18,   29,   25,   26,
-       29,   21,   27,   28,   30,   33,   29,   31,   34,   32,
-       30,   35,   14,   24,   14,   14,   14,   15,   18,   15,
-       27,   27,   31,   31,   22,   13,   18,   13,   36,    3,
-       36,   36,   36,   36,   36,   36,   36,   36,   36,   36,
-       36,   36,   36
+        4,    4,    5,    3,    5,    5
     } ;
 
-static const flex_int16_t yy_chk[74] =
+static const flex_int16_t yy_chk[7] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,   10,   35,   10,   12,   34,   12,   32,
-       12,   17,   31,   17,   30,   17,   18,   29,   18,   19,
-       28,   19,   21,   21,   27,   26,   21,   33,   33,   25,
-       24,   33,   37,   23,   37,   37,   37,   38,   16,   38,
-       39,   39,   40,   40,   14,   13,   11,    7,    3,   36,
-       36,   36,   36,   36,   36,   36,   36,   36,   36,   36,
-       36,   36,   36
+        1,    1,    3,    5,    5,    5
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -415,20 +389,15 @@ static const flex_int16_t yy_chk[74] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "flex_lexer_analyser.l"
-#line 2 "flex_lexer_analyser.l"
-#include <iostream>
-#include <fstream>
-//include symbol staructure that made.
-#include "symb_char_table.h"
-using namespace std;
-//add "\* *\" to rules.
-sym_table token_table;
-int line_no = 0;
-int token_no = 0;
+#line 1 "flexer.l"
+#line 2 "flexer.l"
+#include <stdio.h>
 
-#line 431 "lex.yy.cc"
-#line 432 "lex.yy.cc"
+extern FILE* yyin; // Declare yyin as an external variable
+int yylex(); // Declare yylex function
+int yywrap(); // Declare yywrap function
+#line 400 "flexer3.cpp"
+#line 401 "flexer3.cpp"
 
 #define INITIAL 0
 
@@ -560,13 +529,9 @@ YY_DECL
 		}
 
 	{
-#line 28 "flex_lexer_analyser.l"
+#line 12 "flexer.l"
 
-
-
-
-
-#line 570 "lex.yy.cc"
+#line 535 "flexer3.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -593,13 +558,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 37 )
+				if ( yy_current_state >= 6 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 60 );
+		while ( yy_base[yy_current_state] != 4 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -624,58 +589,19 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
+/* rule 1 can match eol */
 YY_RULE_SETUP
-#line 33 "flex_lexer_analyser.l"
-{}
+#line 13 "flexer.l"
+{ printf("Token: %s\n", yytext); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 35 "flex_lexer_analyser.l"
-{
-            token_table.add(++token_no,line_no,YYText() , "tab");
-}
-	YY_BREAK
-case 3:
-YY_RULE_SETUP
-#line 41 "flex_lexer_analyser.l"
-{
-             token_table.add(++token_no,line_no,YYText() , "number");
-            }
-	YY_BREAK
-case 4:
-/* rule 4 can match eol */
-YY_RULE_SETUP
-#line 45 "flex_lexer_analyser.l"
-{line_no++;}
-	YY_BREAK
-case 5:
-YY_RULE_SETUP
-#line 47 "flex_lexer_analyser.l"
-{
-                 token_table.add(++token_no,line_no,YYText() , "name");
-
-                }
-	YY_BREAK
-case 6:
-YY_RULE_SETUP
-#line 52 "flex_lexer_analyser.l"
-{
-                token_table.add(++token_no,line_no,YYText() , "string");
-
-                }
-	YY_BREAK
-case YY_STATE_EOF(INITIAL):
-#line 58 "flex_lexer_analyser.l"
-{
-                return 0;
-            }
-	YY_BREAK
-case 7:
-YY_RULE_SETUP
-#line 62 "flex_lexer_analyser.l"
+#line 14 "flexer.l"
 ECHO;
 	YY_BREAK
-#line 679 "lex.yy.cc"
+#line 603 "flexer3.cpp"
+case YY_STATE_EOF(INITIAL):
+	yyterminate();
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1090,7 +1016,7 @@ int yyFlexLexer::yy_get_next_buffer()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 37 )
+			if ( yy_current_state >= 6 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1118,11 +1044,11 @@ int yyFlexLexer::yy_get_next_buffer()
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 37 )
+		if ( yy_current_state >= 6 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 36);
+	yy_is_jam = (yy_current_state == 5);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1636,37 +1562,24 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 62 "flex_lexer_analyser.l"
+#line 14 "flexer.l"
 
 
-
-/*
-int main(){
-    std::string file_content;
-    std::ifstream my_file("/home/lrd/Documents/compiler/flex_lexi_analyser_part/newtest.txt"
-     , std::ios::in | std::ios::binary);
-    //my_file.imbue(std::locale(std::locale(),new std::codecvt_utf*<char>));
-    if(my_file.is_open()){
-        std::string line;
-        while(std::getline(my_file,line)){
-            std::cout << line << std::endl;
-            file_content += line +"\n";
-        }
-        yy_scan_string(file_content.c_str());
-        yylex();
-    my_file.close();
-    }
-    else{
-        std::cout << "can't open file.";
-    }
-    token_table.show_table();
-    return 17673;
+int yywrap() {
+    return 1; // Indicate the end of input
 }
-*/
 
+int main() {
+    char file_path[] = "input.txt"; // Specify the file path here
 
+    yyin = fopen(file_path, "r");
+    if (yyin == NULL) {
+        printf("Error opening file: %s\n", file_path);
+        return 1;
+    }
 
+    yylex();
 
-
-
-
+    fclose(yyin);
+    return 0;
+}

@@ -1,6 +1,6 @@
-#line 2 "lexer21.cpp"
+#line 2 "file_lex6.cpp"
 
-#line 4 "lexer21.cpp"
+#line 4 "file_lex6.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -295,15 +295,12 @@ void yyfree ( void *  );
 #define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
 /* Begin user sect3 */
-#define YY_SKIP_YYWRAP
 typedef flex_uint8_t YY_CHAR;
 
 #define yytext_ptr yytext
 #define YY_INTERACTIVE
 
 #include <FlexLexer.h>
-
-int yyFlexLexer::yywrap() { return 1; }
 
 /* Done after the current pattern has been matched and before the
  * corresponding action - sets up yytext.
@@ -416,8 +413,15 @@ static const flex_int16_t yy_chk[74] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "flex_lexer_analyser2.l"
-#line 2 "flex_lexer_analyser2.l"
+#line 1 "file_lexer.l"
+#line 2 "file_lexer.l"
+#include <stdio.h>
+//#include "lex.yy.h"
+
+extern FILE* yyin; // Declare yyin as an external variable
+
+/*below line added to recognize error.*/
+
 #include <iostream>
 #include <fstream>
 //include symbol staructure that made.
@@ -428,8 +432,9 @@ sym_table token_table;
 int line_no = 0;
 int token_no = 0;
 
-#line 432 "lexer21.cpp"
-#line 433 "lexer21.cpp"
+#line 436 "file_lex6.cpp"
+/*above line added to recognize error.*/
+#line 438 "file_lex6.cpp"
 
 #define INITIAL 0
 
@@ -508,6 +513,7 @@ static int yy_flex_strlen ( const char * );
  */
 #ifndef YY_DECL
 #define YY_DECL_IS_OURS 1
+extern int yylex(void);
 #define YY_DECL int yyFlexLexer::yylex()
 #endif /* !YY_DECL */
 
@@ -561,13 +567,13 @@ YY_DECL
 		}
 
 	{
-#line 28 "flex_lexer_analyser2.l"
+#line 38 "file_lexer.l"
 
 
 
 
 
-#line 571 "lexer21.cpp"
+#line 576 "file_lex6.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -626,19 +632,19 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 33 "flex_lexer_analyser2.l"
+#line 43 "file_lexer.l"
 {}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 35 "flex_lexer_analyser2.l"
+#line 45 "file_lexer.l"
 {
             token_table.add(++token_no,line_no,YYText() , "tab");
 }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 41 "flex_lexer_analyser2.l"
+#line 51 "file_lexer.l"
 {
              token_table.add(++token_no,line_no,YYText() , "number");
             }
@@ -646,12 +652,12 @@ YY_RULE_SETUP
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 45 "flex_lexer_analyser2.l"
+#line 55 "file_lexer.l"
 {line_no++;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 47 "flex_lexer_analyser2.l"
+#line 57 "file_lexer.l"
 {
                  token_table.add(++token_no,line_no,YYText() , "name");
 
@@ -659,24 +665,24 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 52 "flex_lexer_analyser2.l"
+#line 62 "file_lexer.l"
 {
                 token_table.add(++token_no,line_no,YYText() , "string");
 
                 }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 58 "flex_lexer_analyser2.l"
+#line 68 "file_lexer.l"
 {
                 return 0;
             }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 62 "flex_lexer_analyser2.l"
+#line 73 "file_lexer.l"
 ECHO;
 	YY_BREAK
-#line 680 "lexer21.cpp"
+#line 685 "file_lex6.cpp"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1637,37 +1643,34 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 62 "flex_lexer_analyser2.l"
+#line 73 "file_lexer.l"
 
 
+int yywrap(){
+return 82323;
+}
+int yylex(){
+    return 234;
+}
+int main() {
+    cout<<"\n line "<< 1 << "\n";
+    char file_path[] = "input.txt"; // Specify the file path here
+    cout<<"\n line "<< 2<< "\n";
 
+    yyin = fopen(file_path, "r");
+        cout<<"\n line "<< 3 << "\n";
 
-int main(int argc, char* argv[]) {
-    if(argc != 2) {
-        cout << "Please provide input file name and try again\n";
-        return 0;
+    if (yyin == NULL) {
+            cout<<"\n line "<< 4 << "\n";
+
+        printf("Error opening file: %s\n", file_path);
+        return 1;
     }
-
-    FILE* fin = fopen(argv[1], "r");
-
-    if(fin == NULL) {
-        printf("Cannot open input file\n");
-        return 0;
-    }
-
-    //logFile.open("1805087_log.txt");
-	//tokenFile.open("1805087_token.txt");
-
-    yyin = fin;
+    cout<<"\n line "<< 5 << "\n";
+    //yyFlexLexer yylex();
     yylex();
-    fclose(fin);
+    cout<<"\n line "<< 6 << "\n";
 
+    fclose(yyin);
     return 0;
 }
-
-
-
-
-
-
-

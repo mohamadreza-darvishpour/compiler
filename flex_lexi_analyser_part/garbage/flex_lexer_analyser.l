@@ -11,7 +11,7 @@ int token_no = 0;
 
 %}
 
-%option noyywrap c++
+%option  c++
 
 string  \"[^\n"]+\"
 tab    [\t]
@@ -62,12 +62,13 @@ number  {num1}|{num2}
 %%
 
 
-
+/*
 int main(){
     std::string file_content;
-    std::ifstream my_file("/home/lrd/Documents/compiler/flex_lexi_analyser_part/newtest.txt"
+    std::ofstream my_file("/home/lrd/Documents/compiler/flex_lexi_analyser_part/newtest.txt"
      , std::ios::in | std::ios::binary);
     //my_file.imbue(std::locale(std::locale(),new std::codecvt_utf*<char>));
+
     if(my_file.is_open()){
         std::string line;
         while(std::getline(my_file,line)){
@@ -76,15 +77,14 @@ int main(){
         }
         yy_scan_string(file_content.c_str());
         yylex();
-    my_file.close();
-    }
-    else{
+        my_file.close();
+    }else{
         std::cout << "can't open file.";
     }
     token_table.show_table();
     return 17673;
 }
-
+*/
 
 
 
