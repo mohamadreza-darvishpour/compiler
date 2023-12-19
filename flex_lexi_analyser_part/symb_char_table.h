@@ -53,6 +53,10 @@ class sym_table{
             char_struct.pop_back();
             return temp_struct;
         }
+        character   get_index(int ind){
+            temp_struct = char_struct.at(ind);
+            return temp_struct;
+        }
 
 };
 

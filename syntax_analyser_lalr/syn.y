@@ -1,49 +1,76 @@
-// parser.y
-
 %{
 #include <iostream>
-#include <cstdlib>
+#include "symb_char_table.h"
+#include <vector>
+
+// Define YYSTYPE to store additional information for each token
+#define YYSTYPE TokenInfo
+
+// Declare the lexer function and variables
+extern int yylex();
+extern int yyleng;
+extern std::sym_table token_table;
+
+// Function to get the next token from the token table
+int getToken() {
+    static size_t index = 0;
+    if (index < token_table.size()) {
+        yyleng = token_table[index].token.length();
+        yylval = token_table[index];
+        return token_table[index++].type;
+    }
+    return 0;  // Return 0 to indicate end of input
+}
+
+void yyerror(const char* s);
+
 %}
 
-%token NUMBER    // Token for numbers
-%token ADD SUB    // Tokens for addition and subtraction
-%token MUL DIV    // Tokens for multiplication and division
-%token LPAREN RPAREN    // Tokens for parentheses
-%token EOL    // Token for end-of-line
+%token NUMBER
+%token PLUS
+%token MINUS
+%token MULTIPLY
+%token DIVIDE
+%token LPAREN
+%token RPAREN
+%token EOL
 
-%left ADD SUB    // Define operator precedence for addition and subtraction
-%left MUL DIV    // Define operator precedence for multiplication and division
+%left PLUS MINUS
+%left MULTIPLY DIVIDE
+%left UMINUS
+
+%type <TokenInfo> expr
 
 %%
 
-%start statements
-;
 statements:
-    statements statement EOL    // Allow multiple statements separated by end-of-line
+    | statements statement EOL { std::cout << "Result: " << $2.token << std::endl; }
     | /* empty */
     ;
 
 statement:
-    expression { std::cout << "Result: " << $1 << std::endl; }    // Print the result of the expression
+    expr                        { $$ = $1; }
     ;
 
-expression:
-    NUMBER    // Base case: expression is a single number
-    | expression ADD expression { $$ = $1 + $3; }    // Addition operation
-    | expression SUB expression { $$ = $1 - $3; }    // Subtraction operation
-    | expression MUL expression { $$ = $1 * $3; }    // Multiplication operation
-    | expression DIV expression { $$ = $1 / $3; }    // Division operation
-    | LPAREN expression RPAREN { $$ = $2; }    // Handle parentheses
+expr:
+    NUMBER                      { $$ = $1; }
+    | expr PLUS expr             { $$ = $1; }
+    | expr MINUS expr            { $$ = $1; }
+    | expr MULTIPLY expr         { $$ = $1; }
+    | expr DIVIDE expr           { $$ = $1; }
+    | MINUS expr %prec UMINUS    { $$ = $1; }
+    | LPAREN expr RPAREN         { $$ = $2; }
     ;
 
 %%
 
-int main() {
-    yyparse();    // Start the parsing process
-    return 0;
+void yyerror(const char* s) {
+    std::cerr << "Error: " << s << " at line " << token_table.back().line << std::endl;
 }
 
-int yyerror(const char* message) {
-    std::cerr << "Error: " << message << std::endl;    // Print error messages
-    exit(1);
+int main() {
+    while (getToken()) {
+        yyparse();  // Start the parsing process
+    }
+    return 0;
 }

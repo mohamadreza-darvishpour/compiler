@@ -21,7 +21,9 @@ int main(){
     yylex();
     std::fclose(inputfile);
     token_table.show_table();
-
+    // additional 
+    character ddd =  token_table.get_index(2);
+    cout<<"the ype is ::::::  " <<ddd.type;
     return 32;
     }
 
