@@ -69,7 +69,17 @@ _________________________________________
 
 syntax analyser part with bison .********************
 
-alter .y to .cpp
+#alter .y to .cpp:
+bison -d -o new.cpp written.y 
+
+#how to compile it ? 
+g++ -o my_parser parser.cpp
+
+
+
+
+
+
 
 
 
