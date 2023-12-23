@@ -23,7 +23,7 @@
 
 
 input:
-  %empty
+  '\n' {printf("\nstart program\n");}
 | input line
 ;
 

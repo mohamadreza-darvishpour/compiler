@@ -5,7 +5,9 @@
 DIGIT   [0-9]
 
 %%
-{DIGIT}+     { yylval.fval = atof(yytext); return NUM; }
+{DIGIT}+     { yylval.fval = atof(yytext);
+                printf("\n digit found");
+                 return NUM; }
 
 [ \t\n]                        ; // Ignore whitespace
 .                              { return *yytext; }
