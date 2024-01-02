@@ -6,13 +6,25 @@ extern int yylex(); // Declare yylex
 
 %union {
     int ival;
+    char* str;
+    int num;
 }
-
+%token <str> str 
+%token <ival> num 
+%token <ival> NUMBER
 %token <ival> INTEGER
+%token IF ELSE WHILE RETURN 
 %left '+' '-'
 %left '*' '/'
+%left PLUS MINUS 
+%left  TIMES DIVIDE
 
+%token IDENTIFIER
+%token  EQ NEQ LT GT LTE GTE PLUS MINUS TIMES DIVIDE ASSIGN LPAREN RPAREN SEMICOLON
 %type <ival> exp
+%nonassoc UMINUS 
+%token 
+%token BOOL BREAK CASE CHAR CONST CONTINUE DEFAULT DOUBLE ELSE FALSE FUNCTION FLOAT FOR IF OUTPUT INT LONG OUTPUT RETURN SIZEOF STRING SWITCH TRUE
 
 %{
 void yyerror(const char* s) {
@@ -23,27 +35,17 @@ void yyerror(const char* s) {
 
 
 %%
-
-calc: exp '\n'        { printf("Result: %d\n", $1); }
-    | calc exp '\n' { printf("Result: %d\n", $2); }    
-    | '\n'   {printf("nothing\n");}
+calc: exp '\n'        { printf("Result1: %d\n", $1); }
+    |calc exp '\n'       { printf("Result5: %d\n", $2); }
+    |calc '\n'       { printf("Result6:**continue** \n"); }
+    
     ;
 
-exp : INTEGER        { $$ = $1; }
+exp : INTEGER        { $$ = $1;printf("Result3: %d\n", $$);}
 
-    | exp '+' exp    { $$ = $1 + $3; }
-    | exp '-' exp    { $$ = $1 - $3; }
-    | exp '*' exp    { $$ = $1 * $3; }
-    | exp '/' exp    { 
-                        if ($3 != 0) {
-                            $$ = $1 / $3;
-                        } else {
-                            printf("Error: Division by zero\n");
-                            yyerror("Error: Division by zero");
-                        }
-                    }
-    | '(' exp ')'     { $$ = $2; }
+    | exp PLUS exp     { $$ = $1 + $3; printf("Result4: %d\n", $$);}
     ;
+
 
 %%
 

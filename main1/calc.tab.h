@@ -54,7 +54,30 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    INTEGER = 258                  /* INTEGER  */
+    str = 258,                     /* str  */
+    num = 259,                     /* num  */
+    NUMBER = 260,                  /* NUMBER  */
+    INTEGER = 261,                 /* INTEGER  */
+    IF = 262,                      /* IF  */
+    ELSE = 263,                    /* ELSE  */
+    WHILE = 264,                   /* WHILE  */
+    RETURN = 265,                  /* RETURN  */
+    IDENTIFIER = 266,              /* IDENTIFIER  */
+    EQ = 267,                      /* EQ  */
+    NEQ = 268,                     /* NEQ  */
+    LT = 269,                      /* LT  */
+    GT = 270,                      /* GT  */
+    LTE = 271,                     /* LTE  */
+    GTE = 272,                     /* GTE  */
+    PLUS = 273,                    /* PLUS  */
+    MINUS = 274,                   /* MINUS  */
+    TIMES = 275,                   /* TIMES  */
+    DIVIDE = 276,                  /* DIVIDE  */
+    ASSIGN = 277,                  /* ASSIGN  */
+    LPAREN = 278,                  /* LPAREN  */
+    RPAREN = 279,                  /* RPAREN  */
+    SEMICOLON = 280,               /* SEMICOLON  */
+    UMINUS = 281                   /* UMINUS  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -66,8 +89,10 @@ union YYSTYPE
 #line 7 "calc.y"
 
     int ival;
+    char* str;
+    int num;
 
-#line 71 "calc.tab.h"
+#line 96 "calc.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
