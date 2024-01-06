@@ -69,7 +69,7 @@ void freeTable(struct DataTable* table) {
     free(table);
 }
 
-//return index of ID . 0=True    1=False 
+//return existance of ID . 0=True    1=False 
 int has_id(struct DataTable* table , const char id_str[]){
     for (int i = 0; i < table->row; i++ ) {
         printf("fir=  %s\n",table->data[i][0]);
@@ -88,6 +88,21 @@ int has_id(struct DataTable* table , const char id_str[]){
 
 }
 
+//find index of id if exists. 
+int find_id_index(struct DataTable* table , const char id_str[]){
+    for (int i = 0; i < table->row; i++ ) {
+        if (table->data[i][0]!=NULL){
+         if(  strcmp( table->data[i][0], id_str)==0  ){
+            return i;
+        }
+        }
+    }
+    return -1402 ;
+    
+
+}
+
+
 int main() {
     // Create a table with 3 rows and 4 columns
     struct DataTable* myTable = createTable(10, 4);
@@ -103,7 +118,7 @@ int main() {
     myTable->data[1][2] = "t3";
     myTable->data[1][3] = "t4";    
 
-    myTable->data[2][1] = "w5";
+    myTable->data[2][1] = "t5";
     myTable->data[2][2] = "t6";
     myTable->data[2][3] = "t7";    
     myTable->data[2][0] = "t8";
@@ -119,10 +134,7 @@ int main() {
     myTable->data[4][3] = "t16";
  
 
-    // Display the table
-    //displayTable(myTable);
-    printf("\nlast*****\n%d\n******\n",has_id(myTable,"t143"));
-    //printf("\n\n232******\n%d\n******\n",strcmp(myTable->data[1][0],"two"));
+    printf("\nlast*****\n%d\n******\n",find_id_index(myTable,"t13"));
 
     // Free memory
     freeTable(myTable);
