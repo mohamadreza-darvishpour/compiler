@@ -102,6 +102,18 @@ int last_empty_id_index(struct DataTable* table ){
 
 }
 
+//add new id   True = 0   False = 1 
+int add_empty_id(struct DataTable* table ,const char id[],const char id_type[]){
+    int last_empty = last_empty_id_index(table);
+    if(last_empty==-2001){
+        return 1;
+    }
+    table->data[last_empty][0] = id  ;
+    table->data[last_empty][1] =  id_type   ;
+    table->data[last_empty][2] = "False"  ;
+    table->data[last_empty][3] =  NULL   ;
+    return 0;
+}
 
 //find index of id if exists. 
 int find_id_index(struct DataTable* table , const char id_str[]){
@@ -120,7 +132,7 @@ int find_id_index(struct DataTable* table , const char id_str[]){
 
 int main() {
     // Create a table with 3 rows and 4 columns
-    struct DataTable* myTable = createTable(5, 4);
+    struct DataTable* myTable = createTable(15, 4);
 
     // Add data to the table
     myTable->data[0][0] = "189423";
@@ -148,8 +160,8 @@ int main() {
     myTable->data[4][2] = "t15";
     myTable->data[4][3] = "t16";
  
-
-    printf("\nlast*****\n%d\n******\n",last_empty_id_index(myTable ));
+    int dd = add_empty_id(myTable,"t17","t18");
+    printf("\nlast*****\n%d\n******\n",dd);
 
     // Free memory
     freeTable(myTable);
