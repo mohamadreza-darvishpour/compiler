@@ -1,4 +1,4 @@
-rm calc.tab.c calc.tab.h lex.yy.c calc; flex -d calc.l ; bison -d calc.y ;gcc -o calc calc.tab.c calc.tab.h lex.yy.c -lfl
+rm comp.tab.c comp.tab.h lex.yy.c comp; flex -d comp.l ; bison -d comp.y ;gcc -o  comp comp.tab.c comp.tab.h lex.yy.c -lfl
 
 
 
@@ -6,5 +6,7 @@ rm calc.tab.c calc.tab.h lex.yy.c calc; flex -d calc.l ; bison -d calc.y ;gcc -o
 run flex then bison then compile it . 
 
 
+how to get file to comp? 
+./ulator < input.txt
 
 

@@ -3,31 +3,21 @@
 %}
 
 %%
+"if"    { return IF; }
+"else"  { return ELSE; }
+"while" { return WHILE; }
+"return" { return RETURN; }
 
+bool 
+break
+case 
+char 
+const 
+continue 
+default 
+double
+else
 
-"bool"     { return BOOL; }
-"break"     { return BREAK; }
-"case"     { return CASE; }
-"char"     { return CHAR; }
-"const"     { return CONST; }
-"continue"     { return CONTINUE; }
-"default"     { return DEFAULT; }
-"double"     { return DOUBLE; }
-"else"     { return ELSE; }
-"false"     { return FALSE; }
-"function"     { return FUNCTION; }
-"float"     { return FLOAT; }
-"for"     { return FOR; }
-"if"     { return IF; }
-"input"     { return OUTPUT; }
-"int"     { return INT; }
-"long"     { return LONG; }
-"output"     { return OUTPUT; }
-"return"     { return RETURN ; }
-"sizeof"     { return SIZEOF; }
-"string"     { return STRING; }
-"switch"     { return SWITCH; }
-"true"     { return TRUE; }
 
 
 "=="    { return EQ; }

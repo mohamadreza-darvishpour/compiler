@@ -1,1 +1,1 @@
-Result3: 3
+var1 = 23; output(var1);

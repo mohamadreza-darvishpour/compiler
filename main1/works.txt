@@ -1,0 +1,17 @@
+simple program 
+has function declaration and output
+input method and just do simple math 
+expression
+
+
+
+
+
+
+
+
+
+
+
+
+
