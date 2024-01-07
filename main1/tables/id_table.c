@@ -84,8 +84,20 @@ int has_id(struct DataTable* table , const char id_str[]){
         }
     }
     return 1 ;
-    
+}
 
+//return consistance of ID . 0=True    1=False 
+int is_const_id(struct DataTable* table , const char id_str[]){
+    
+    int index = find_id_index(table, id_str);
+            //check if id is equal to any const. 
+        if(  strcmp( table->data[index][1], "const_char")==0  ){
+            return 0;
+        }
+        if(  strcmp( table->data[index][1], "const_int")==0  ){
+            return 0;
+        }
+    return 1 ;
 }
 
 
@@ -114,6 +126,10 @@ int add_empty_id(struct DataTable* table ,const char id[],const char id_type[]){
     table->data[last_empty][3] =  NULL   ;
     return 0;
 }
+
+
+
+
 
 //find index of id if exists. 
 int find_id_index(struct DataTable* table , const char id_str[]){
@@ -150,17 +166,17 @@ int main() {
     myTable->data[2][3] = "t7";    
     myTable->data[2][0] = "t8";
 
-    myTable->data[3][1] = "t9";
+    myTable->data[3][0] = "t9";
+    myTable->data[3][1] = "t12";
     myTable->data[3][2] = "t10";
     myTable->data[3][3] = "t11";
-    myTable->data[3][0] = "t12";
 
     myTable->data[4][0] = "t13";
-    myTable->data[4][1] = "t14";
+    myTable->data[4][1] = "const_char";
     myTable->data[4][2] = "t15";
     myTable->data[4][3] = "t16";
  
-    int dd = add_empty_id(myTable,"t17","t18");
+    int dd = is_const_id(myTable,"t13");
     printf("\nlast*****\n%d\n******\n",dd);
 
     // Free memory
